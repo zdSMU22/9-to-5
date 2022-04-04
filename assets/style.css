@@ -22,7 +22,15 @@ textarea{
   border-bottom: 10px solid black;
 }
 
-.input{
+.input-text0,
+.input-text1,
+.input-text2,
+.input-text3,
+.input-text4,
+.input-text5,
+.input-text6,
+.input-text7,
+.input-text8{
   white-space: pre-wrap;
   height: 95%;
   width: 80%;

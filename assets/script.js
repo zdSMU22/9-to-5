@@ -1,51 +1,52 @@
-// global varaible set
+// global variables are set here
 var saveBtn = document.querySelector(".btnSave");
-var input = document.querySelector(".input");
-var timeNow = moment().hour();
+var input = document.querySelector("#task");
+var text = document.querySelector("#text");
+// var timeNow = moment().hour();
 
 // Display today's day and date
 var todayDate = moment().format('dddd, MMM Do YYYY');
 $("#currentDay").html(todayDate);
 
-// This functions listens for a click on the save button and logs the text input for 9am
-    saveBtn.addEventListener("click", function(saveInput){
-        console.log("You've clicked me");
-        
-        var text = $(this).siblings(".input").val();
-        console.log(text);
-        
-        var saveText= document.getElementsByClassName(".input").value;
-        localStorage.setItem("input", input);
-    });
+// This functions listens for a click on the save button and logs the text input for 9am        
+        var saveText= document.querySelector("#task");
 
+        saveBtn.onclick = function(){
+            var value = saveText.value;
     
+            // console.log(key);
+            console.log(value);
+
+            // Places the item into local storage
+            localStorage.setItem("value",value);
+        }
 
     // Use this to retrieve the information from local storage
-    localStorage.getItem("input");
- 
-// Using this to add the infromation from local storage to the correct time block
-    var timeBlock = localStorage.getItem(input);
-    var setTime = $(".time-block");
+    var timeBlock = localStorage.getItem("value");
+    console.log (timeBlock);
+    var setTime = $(".input-text0");
     setTime.append(timeBlock);
+    
 
-//This is to change the CSS (color) for the past, present, and future times. 
+// This is to change the CSS (color) for the past, present, and future times. 
     $(".time-block").each(function(){
+        var timeNow = moment().hour();
         console.log(timeNow);
 
         if (timeBlock < timeNow){
-            $(this).removeClass(".future");
-            $(this).removeClass(".present");
-            $(this).addClass(".past");
+            $(".time-block").removeClass(".future");
+            $(".time-block").removeClass(".present");
+            $(".time-block").addClass(".past");
 
         } else if (timeBlock === timeNow){
-            $(this).removeClass(".future");
-            $(this).removeClass(".past");
-            $(this).addClass(".present");
+            $(".time-block").removeClass(".future");
+            $(".time-block").removeClass(".past");
+            $(".time-block").addClass(".present");
             
         } else{
-            $(this).removeClass(".past");
-            $(this).removeClass(".present");
-            $(this).addClass(".future");
+            $(".time-block").removeClass(".past");
+            $(".time-block").removeClass(".present");
+            $(".time-block").addClass(".future");
         }
     });
     
